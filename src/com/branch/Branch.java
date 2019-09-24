@@ -1,5 +1,7 @@
 package com.branch;
 
+import util.PhoneNumber;
+
 public class Branch {
 	private String id;
 	private String branchName;
@@ -13,7 +15,7 @@ public class Branch {
 		this.phNo = phNo;
 	}
 	public static Branch createObject(String id, String branchName, String address, String phNo) {
-		if(checkPh(phNo)) {
+		if(PhoneNumber.checkPh(phNo)) {
 			Branch objBranch = new Branch(id, branchName, address, phNo);
 			return objBranch;
 		}
@@ -22,23 +24,7 @@ public class Branch {
 			return null;
 		}
 	}
-	private static boolean checkPh(String phNo) {
-		int phLen = phNo.length();
-		for(int i = 0; i < phLen; i++) {
-			if(Character.isDigit(phNo.charAt(i))) {
-				continue;
-			}
-			else {
-				return false;	
-			}
-		}
-		if(phLen== 10 || phLen == 8) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
+	
 	public String getId() {
 		return id;
 	}
